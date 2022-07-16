@@ -12,7 +12,17 @@ enum TokenType {
     OutputCell,
     InputCell,
     BeginLoop,
-    EndLoop
+    EndLoop,
+    EOF
+}
+
+struct Lexer {
+    input: String
+}
+impl Lexer {
+    fn lex(&self) -> Vec<Token> {
+        todo!()
+    }
 }
 fn main() {
     println!("Hello, world!");
