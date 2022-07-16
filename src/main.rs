@@ -1,4 +1,4 @@
-
+use std::fmt;
 use std::vec;
 
 struct Token {
@@ -7,10 +7,12 @@ struct Token {
     pos: usize 
 }
 
-impl fmt:: {
-    
+impl fmt::Display for Token {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result{
+        write!(f, "type: {:?} with value: {} at pos: {}", self.type_, self.value, self.pos)
+    }
 }
-
+#[derive(Debug)]
 enum TokenType {
     MovePointerRight,
     MovePointerLeft,
@@ -57,5 +59,8 @@ impl Lexer {
     }
 }
 fn main() {
-    println!("Hello, world!");
+    let tokens = Lexer{input: String::from("++++>>>+>---")}.lex();
+    for token in tokens {
+        println!("{}", token);
+    } 
 }
