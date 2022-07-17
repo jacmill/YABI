@@ -14,14 +14,14 @@ impl fmt::Display for Token {
 }
 #[derive(Debug)]
 enum TokenType {
-    MOVE_RIGHT,
-    MOVE_LEFT,
-    OP_INCREMENT,
-    OP_DECREMENT,
-    CELL_OUTPUT,
-    CELL_INPUT,
-    LOOP_BEGIN,
-    LOOP_END,
+    MoveRight,
+    MoveLeft,
+    OpIncrement,
+    OpDecrement,
+    CellOutput,
+    CellInput,
+    LoopBegin,
+    LoopEnd,
     EOF
 }
 
@@ -33,14 +33,14 @@ impl Lexer {
         let mut tokens: Vec<Token> = vec![];
         for (pos, lookahead) in self.input.chars().enumerate() {
             let token_type: TokenType = match lookahead {
-                '>' => TokenType::MOVE_RIGHT,
-                '<' => TokenType::MOVE_LEFT,
-                '+' => TokenType::OP_INCREMENT,
-                '-' => TokenType::OP_DECREMENT,
-                '.' => TokenType::CELL_OUTPUT,
-                ',' => TokenType::CELL_INPUT,
-                '[' => TokenType::LOOP_BEGIN,
-                ']' => TokenType::LOOP_END,
+                '>' => TokenType::MoveRight,
+                '<' => TokenType::MoveLeft,
+                '+' => TokenType::OpIncrement,
+                '-' => TokenType::OpDecrement,
+                '.' => TokenType::CellOutput,
+                ',' => TokenType::CellInput,
+                '[' => TokenType::LoopBegin,
+                ']' => TokenType::LoopEnd,
                 _ => continue
             };
             tokens.push(Token{
